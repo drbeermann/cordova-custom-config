@@ -714,8 +714,11 @@ var applyCustomConfig = (function(){
      * @param configItems
      */
     function updateIosPlist (targetFilePath, configItems) {
+        logger.verbose("Updating iOS Plist");
         var infoPlist = plist.parse(fs.readFileSync(targetFilePath, 'utf-8')),
             tempInfoPlist;
+
+        logger.verbose("Config items: " + JSON.stringify(configItems));
 
         _.each(configItems, function (item) {
             var key = item.parent;
@@ -1020,6 +1023,7 @@ var applyCustomConfig = (function(){
 
         _.each(configData, function (configItems, targetName) {
             var targetFilePath;
+            logger.vebose("Target is: " + targetName);
             if (platform === 'ios') {
                 if (targetName.indexOf("Info.plist") > -1) {
                     targetName =  projectName + '-Info.plist';
@@ -1116,10 +1120,14 @@ var applyCustomConfig = (function(){
         settings = fileUtils.getSettings();
         var runHook = settings.hook ? settings.hook : defaultHook;
 
+        logger.verbose("configXml object: " + JSON.stringify(configXml));
+
         if(context.hook !== runHook){
             logger.debug("Aborting applyCustomConfig.js because current hook '"+context.hook+"' is not configured hook '"+runHook+"'");
             return complete();
         }
+
+        logger.verbose("init Platforms: " + JSON.stringify(context.opts.platforms));
 
         // go through each of the context platforms
         _.each(context.opts.platforms, function (platform, index) {
