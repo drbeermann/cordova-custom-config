@@ -1126,7 +1126,7 @@ var applyCustomConfig = (function(){
         logger.verbose("configXml object: " + JSON.stringify(configXml));
 
         if(context.hook !== runHook){
-            logger.debug("Aborting applyCustomConfig.js because current hook '"+context.hook+"' is not configured hook '"+runHook+"'");
+            logger.verbose("Aborting applyCustomConfig.js because current hook '"+context.hook+"' is not configured hook '"+runHook+"'");
             return complete();
         }
 
