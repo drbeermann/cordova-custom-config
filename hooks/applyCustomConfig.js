@@ -1120,6 +1120,9 @@ var applyCustomConfig = (function(){
         settings = fileUtils.getSettings();
         var runHook = settings.hook ? settings.hook : defaultHook;
 
+        logger.verbose("context object: " + JSON.stringify(context));
+        logger.verbose("settings object: " + JSON.stringify(settings));
+        logger.verbose("runHook: " + runHook);
         logger.verbose("configXml object: " + JSON.stringify(configXml));
 
         if(context.hook !== runHook){
