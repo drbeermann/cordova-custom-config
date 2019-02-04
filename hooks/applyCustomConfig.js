@@ -1023,7 +1023,7 @@ var applyCustomConfig = (function(){
 
         _.each(configData, function (configItems, targetName) {
             var targetFilePath;
-            logger.vebose("Target is: " + targetName);
+            logger.verbose("Target is: " + targetName);
             if (platform === 'ios') {
                 if (targetName.indexOf("Info.plist") > -1) {
                     targetName =  projectName + '-Info.plist';
